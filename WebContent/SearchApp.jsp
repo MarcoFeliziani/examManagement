@@ -12,13 +12,15 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><fmt:message key="Filter.Para.Title" bundle="${lang}"/></title>
         
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
 		<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		
 		<script type="text/javascript">
 			$(function() {
-    		$( "#dataAppello" ).datepicker({ dateFormat: 'dd/mm/yy', minDate: 'today', maxDate: 'today+1Y' });
-    		
+    			$( "#dataAppello" ).datepicker({ dateFormat: 'dd/mm/yy', minDate: 'today', maxDate: 'today+1Y' });
+    			$( "#aDataAppello" ).datepicker({ dateFormat: 'dd/mm/yy', minDate: 'today', maxDate: 'today+1Y' });
+  
     		/*Elimina i 'required' quando viene premuto il pulsante "Controllo di sovrapposizione"*/
     		$("#submit").click(function() {
     		    $("#cdsId").removeProp('required');
@@ -29,6 +31,9 @@
     		
 		</script>
 		
+		<script type="text/javascript">
+			$(".js-example-basic-multiple").select2();
+		</script>
 		
 </head>
 <body>
@@ -85,13 +90,26 @@
 		<div><label for="dataAppello"><fmt:message key="app.label.dataAppello" bundle="${lang}" />:</label> <input type="text" name="dataAppello" id="dataAppello" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${bean.nome}" />"  required> </div>
 		<div><label for="aDataAppello"><fmt:message key="app.label.aDataAppello" bundle="${lang}" />:</label> <input type="text" name="aDataAppello" id="aDataAppello" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${bean.nome}" />"> </div>
 
+		<div><label for="doceMatricolaOverlay"><fmt:message key="app.label.doceMatricolaOverlay" bundle="${lang}" />:</label> 
+			<br/>
+			<select name="doceMatricolaOverlay" class="js-example-basic-multiple" id="doceMatricolaOverlay"  multiple >
+					<option value=""></option>
+	    		<c:forEach var="item" items="${doceList}">
+	        		<option value="${item.doceMatricola}">${item.nomeCompleto}</option>
+	    		</c:forEach>
+			</select>
+		</div>
+
 		<br/>
 		<input type="submit" name="submit" id="submit" value="<fmt:message key="submit" bundle="${lang}" />" />
-		
 		<input type="submit" name="check" id="check" value="<fmt:message key="check" bundle="${lang}" />" />
+		<br/>
+		
+		
+
 <!-- 		<input type="button" onclick="location.href='<%=request.getContextPath() %>/CalendarioAppController?action=check&id=${item.doceMatricola}';" value="<fmt:message key="check" bundle="${lang}"/>" /> -->
 		
 		</form>
-<p><a href="<%=request.getContextPath()%>/provaData.jsp">Data</a></p>
+
 </body>
 </html>

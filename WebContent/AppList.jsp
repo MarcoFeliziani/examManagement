@@ -85,6 +85,9 @@
             	<th>attività didattica</th>
 				<th>tipo</th>
 				<th>docente</th>
+			<c:if test= "${bean.doceRuolo != 'null'}">
+				<th>ruolo del docente</th>
+			</c:if>
 				<th>data appello</th>
 				<c:if test= "${action == 'checkCompleted'}">
 					<th>conflitto</th>
@@ -99,6 +102,9 @@
 				<td><c:out value="${bean.adGenDes}" /></td>
 				<td><c:out value="${bean.tipoIscrDes}" /></td>
 				<td><c:out value="${bean.nomeCompleto}" /></td>
+				<c:if test= "${bean.doceRuolo != 'null'}">
+				<td><c:out value="${bean.doceRuolo}" /></td>
+				</c:if>
 				<td><c:out value="${bean.dataAppello}" /></td>
 				<c:if test= "${action == 'checkCompleted'}">
 				<td class = <c:choose>

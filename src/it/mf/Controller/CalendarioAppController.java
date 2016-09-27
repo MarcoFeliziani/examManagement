@@ -64,27 +64,34 @@ public class CalendarioAppController extends HttpServlet {
 		retValue.setCdsId(Utility.parseInteger(request.getParameter("cdsId")));
 		retValue.setAdId(Utility.parseInteger(request.getParameter("adId")));
 		retValue.setDoceMatricola(Utility.parseInteger(request.getParameter("doceMatricola")));
-		retValue.setDoceRuolo(request.getParameter("doceRuolo"));
+		retValue.setDoceRuolo(request.getParameter("ruoloCod"));
 		retValue.setDataAppello(Utility.parseDate(request.getParameter("dataAppello")));
+		retValue.setADataAppello(Utility.parseDate(request.getParameter("aDataAppello")));
 		
 		Integer facId = Utility.parseInteger(request.getParameter("facId"));
 		Integer cdsId = Utility.parseInteger(request.getParameter("cdsId"));
 		Integer adId = Utility.parseInteger(request.getParameter("adId"));
 		Integer doceMatricola = Utility.parseInteger(request.getParameter("doceMatricola"));
-		String doceRuolo = request.getParameter("doceRuolo");
+		String doceRuolo = request.getParameter("ruoloCod");
 		Date dataAppello = Utility.parseDate(request.getParameter("dataAppello"));
-		//Date aDataAppello = Utility.parseDate(request.getParameter("aDataAppello"));
+		Date aDataAppello = Utility.parseDate(request.getParameter("aDataAppello"));
+		String[] multiSelected = (request.getParameterValues("doceMatricolaOverlay"));
 		
 		forward = LIST_APPELLO;
 		String action = request.getParameter("check");
 		
-		if ((action != null)){
+		if (action == null){
 			
-			request.setAttribute("beans", dao.getListaAppelli(facId, cdsId, adId, 0, doceRuolo, dataAppello, doceMatricola));
+			request.setAttribute("beans", dao.getListaAppelli(facId, cdsId, adId, doceMatricola, doceRuolo, dataAppello, aDataAppello));
+//			request.setAttribute("action", "checkCompleted");
+		}
+		else if(multiSelected.length != 0 && action != null){
+			request.setAttribute("beans", dao.getCheckOverlayDoc(facId, cdsId, adId, doceMatricola, doceRuolo, dataAppello, aDataAppello, doceMatricola, multiSelected));
 			request.setAttribute("action", "checkCompleted");
 		}
 		else{
-		request.setAttribute("beans", dao.getListaAppelli(facId, cdsId, adId, doceMatricola, doceRuolo, dataAppello, 0));
+			request.setAttribute("beans", dao.getCheckOverlay(facId, cdsId, adId, doceMatricola, doceRuolo, dataAppello, aDataAppello, doceMatricola));
+			request.setAttribute("action", "checkCompleted");
 		}
 		
 		setFacoltaList(request);

@@ -203,7 +203,7 @@ public class CalendarioApp {
 	public String toString() {
 		return "CalendarioApp [facId=" + facId + ", facDes=" + facDes + ", cdsId=" + cdsId + ", cdsDes=" + cdsDes + 
 				", adId=" + adId + ", adGenDes=" + adGenDes + ", tipoIscrDes=" + tipoIscrDes + ", doceMatricola=" + doceMatricola + 
-				", doceCognome=" + doceCognome + ", dataAppello=" + dataAppello + ", aDataAppello=" + aDataAppello + ", tr=" + tr + ", doceRuolo=" + doceRuolo + "]";
+				", doceCognome=" + doceCognome + ", dataAppello=" + dataAppello + ", tr=" + tr + ", doceRuolo=" + doceRuolo + "]";
 	}
 
 }
