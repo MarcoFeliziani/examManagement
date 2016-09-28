@@ -12,10 +12,10 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><fmt:message key="Filter.Para.Title" bundle="${lang}"/></title>
         
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
 		<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-		
+
 		<script type="text/javascript">
 			$(function() {
     			$( "#dataAppello" ).datepicker({ dateFormat: 'dd/mm/yy', minDate: 'today', maxDate: 'today+1Y' });
@@ -23,8 +23,8 @@
   
     		/*Elimina i 'required' quando viene premuto il pulsante "Controllo di sovrapposizione"*/
     		$("#submit").click(function() {
-    		    $("#cdsId").removeProp('required');
-    		    $("#doceMatricola").removeProp('required');
+    		    //$("#cdsId").removeProp('required');
+    		    $("#doceId").removeProp('required');
     		    $("#dataAppello").removeProp('required');
     		});
 			});
@@ -32,8 +32,18 @@
 		</script>
 		
 		<script type="text/javascript">
-			$(".js-example-basic-multiple").select2();
+		$(document).ready(function(){
+			$(".descrizione").hide();
+			
+    		$("#hide").click(function(){
+        	$(".descrizione").hide();
+    	});
+    		$("#show").click(function(){
+       		$(".descrizione").show();
+    	});
+		});
 		</script>
+
 		
 </head>
 <body>
@@ -43,6 +53,7 @@
 			<div><label for="facoId"><fmt:message key="app.label.facoltaId" bundle="${lang}" />:</label> 
 			<br/>
 			<select name="facId" id="facId">
+					<option value=""></option>
 	    		<c:forEach var="item" items="${facList}">
 	        		<option value="${item.facId}">${item.facDes}</option>
 	    		</c:forEach>
@@ -50,7 +61,7 @@
 			</div>
 			
 			<div><label for="cdsId"><fmt:message key="app.label.cdsId" bundle="${lang}" />:</label> 
-			<select name="cdsId" id="cdsId" required>
+			<select name="cdsId" id="cdsId" >
 					<option value=""></option>
 	    		<c:forEach var="item" items="${cdsList}">
 	        		<option value="${item.cdsId}">${item.completaDesCds}</option>
@@ -67,12 +78,12 @@
 			</select>
 			</div>
 			
-			<div><label for="doceMatricola"><fmt:message key="app.label.doceMatricola" bundle="${lang}" />:</label> 
+			<div><label for="doceId"><fmt:message key="app.label.doceMatricola" bundle="${lang}" />:</label> 
 			<br/>
-			<select name="doceMatricola" id="doceMatricola" required >
+			<select name="doceId" id="doceId" required >
 					<option value=""></option>
 	    		<c:forEach var="item" items="${doceList}">
-	        		<option value="${item.doceMatricola}">${item.nomeCompleto}</option>
+	        		<option value="${item.doceId}">${item.nomeCompleto}</option>
 	    		</c:forEach>
 			</select>
 			</div>
@@ -90,15 +101,58 @@
 		<div><label for="dataAppello"><fmt:message key="app.label.dataAppello" bundle="${lang}" />:</label> <input type="text" name="dataAppello" id="dataAppello" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${bean.nome}" />"  required> </div>
 		<div><label for="aDataAppello"><fmt:message key="app.label.aDataAppello" bundle="${lang}" />:</label> <input type="text" name="aDataAppello" id="aDataAppello" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${bean.nome}" />"> </div>
 
-		<div><label for="doceMatricolaOverlay"><fmt:message key="app.label.doceMatricolaOverlay" bundle="${lang}" />:</label> 
+		<br/>
+			<div class="descrizione"><label for="facIdVs"><fmt:message key="app.label.facoltaIdVs" bundle="${lang}" />:</label> 
+				<br/>
+				<select name="facIdVs" id="facIdVs">
+						<option value=""></option>
+	    			<c:forEach var="item" items="${facList}">
+	        			<option value="${item.facId}">${item.facDes}</option>
+	    			</c:forEach>
+				</select>
+			</div>
+			
+			<div class="descrizione"><label for="cdsIdVs"><fmt:message key="app.label.cdsIdVs" bundle="${lang}" />:</label> 
+			<select name="cdsIdVs" id="cdsIdVs">
+					<option value=""></option>
+	    		<c:forEach var="item" items="${cdsList}">
+	        		<option value="${item.cdsId}">${item.completaDesCds}</option>
+	    		</c:forEach>
+			</select>
+			</div>
+			
+			<div class="descrizione"><label for="adIdVs"><fmt:message key="app.label.adIdVs" bundle="${lang}" />:</label> 
+			<select name="adIdVs" id="adIdVs">
+					<option value="0"></option>
+	    		<c:forEach var="item" items="${adList}">
+	        		<option value="${item.adId}">${item.completaDesAd}</option>
+	    		</c:forEach>
+			</select>
+			</div>
+		<div class="descrizione"><label for="doceIdVs"><fmt:message key="app.label.doceMatricolaVs" bundle="${lang}" />:</label> 
 			<br/>
-			<select name="doceMatricolaOverlay" class="js-example-basic-multiple" id="doceMatricolaOverlay"  multiple >
+			<select name="doceIdVs" id="doceIdVs"  multiple required>
 					<option value=""></option>
 	    		<c:forEach var="item" items="${doceList}">
-	        		<option value="${item.doceMatricola}">${item.nomeCompleto}</option>
+	        		<option value="${item.doceId}">${item.nomeCompleto}</option>
 	    		</c:forEach>
 			</select>
 		</div>
+		<div class="descrizione"><label for="ruoloCodVs"><fmt:message key="app.label.ruoloCodVs" bundle="${lang}" />:</label> 
+			<br/>
+			<select name="ruoloCodVs" id="ruoloCodVs" >
+					<option value=""></option>
+	    		<c:forEach var="item" items="${ruoloList}">
+	        		<option value="${item.ruoloCod}">${item.ruoloDes}</option>
+	    		</c:forEach>
+			</select>
+			</div>
+	<!-- 		<button id="hide" value="<fmt:message key="hide" bundle="${lang}" />" ></button>
+			<button id="show" value="<fmt:message key="show" bundle="${lang}" />" ></button>-->
+			<br/>
+			<input type="submit" name="hide" id="hide" value="<fmt:message key="hide" bundle="${lang}" />" />
+			<input type="submit" name="show" id="show" value="<fmt:message key="show" bundle="${lang}" />" />
+			<br/>
 
 		<br/>
 		<input type="submit" name="submit" id="submit" value="<fmt:message key="submit" bundle="${lang}" />" />

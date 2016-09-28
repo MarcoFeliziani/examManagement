@@ -3,6 +3,7 @@ package it.mf.Model;
 public class Docente implements Comparable<Docente>{
 	
 		private Integer doceMatricola;
+		private Integer doceId;
 		private String doceCognome;
 		private String doceNome;
 		
@@ -11,6 +12,12 @@ public class Docente implements Comparable<Docente>{
 		}
 		public void setDoceMatricola(Integer doceMatricola) {
 			this.doceMatricola = doceMatricola;
+		}
+		public Integer getDoceId() {
+			return doceId;
+		}
+		public void setDoceId(Integer doceId) {
+			this.doceId = doceId;
 		}
 		public String getDoceCognome() {
 			return doceCognome;
@@ -56,7 +63,7 @@ public class Docente implements Comparable<Docente>{
 		}
 		@Override
 		public String toString() {
-			return "Docente [doceMatricola=" + doceMatricola + ", doceCognome=" + doceCognome + ", doceNome=" + doceNome + "]";
+			return "Docente [doceMatricola=" + doceMatricola + ", doceId=" + doceId + ", doceCognome=" + doceCognome + ", doceNome=" + doceNome + "]";
 		}
 		@Override
 		public int compareTo(Docente o) {

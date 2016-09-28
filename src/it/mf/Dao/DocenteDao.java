@@ -51,6 +51,7 @@ public class DocenteDao extends Dao {
 		retValue.setDoceNome(rs.getString("DOCE_NOME"));
 		retValue.setDoceCognome(rs.getString("DOCE_COGNOME"));
 		retValue.setDoceMatricola(rs.getInt("DOCE_MATRICOLA"));
+		retValue.setDoceId(rs.getInt("DOCE_ID"));
 		return retValue;
 	}
 	

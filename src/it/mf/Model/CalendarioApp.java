@@ -13,13 +13,26 @@ public class CalendarioApp {
 	private Integer adId;
 	private String adGenDes; //Nome dell'appello
 	private String tipoIscrDes; //Orale o Scritto
-	private Integer doceMatricola; 
+	private Integer doceId; 
 	private String doceNome;
 	private String doceCognome;
 	private String doceRuolo;
 	private Date dataAppello;
 	private Date aDataAppello;
 	private Integer tr;
+	private Integer facIdVs;
+	private String facDesVs;
+	private Integer cdsIdVs;
+	private String cdsCodVs;
+	private String cdsDesVs;
+	private Integer adIdVs;
+	private String adGenDesVs; //Nome dell'appello
+	private String tipoIscrDesVs; //Orale o Scritto
+	private Integer doceIdVs; 
+	private String doceNomeVs;
+	private String doceCognomeVs;
+	private String doceRuoloVs;
+	private Date dataAppelloVs;
 	
 	public Integer getFacId() {
 		return facId;
@@ -69,11 +82,11 @@ public class CalendarioApp {
 	public void setTipoIscrDes(String tipoIscrDes) {
 		this.tipoIscrDes = tipoIscrDes;
 	}
-	public Integer getDoceMatricola() {
-		return doceMatricola;
+	public Integer getDoceId() {
+		return doceId;
 	}
-	public void setDoceMatricola(Integer doceMatricola) {
-		this.doceMatricola = doceMatricola;
+	public void setDoceId(Integer doceId) {
+		this.doceId = doceId;
 	}
 	public String getDoceNome() {
 		return doceNome;
@@ -116,6 +129,90 @@ public class CalendarioApp {
 	}
 	public String getCompletaDesCds() {
 		return "[" + cdsCod + "]" + " " + cdsDes;
+	}
+	public Integer getFacIdVs() {
+		return facIdVs;
+	}
+	public void setFacIdVs(Integer facIdVs) {
+		this.facIdVs = facIdVs;
+	}
+	public String getFacDesVs() {
+		return facDesVs;
+	}
+	public void setFacDesVs(String facDesVs) {
+		this.facDesVs = facDesVs;
+	}
+	public Integer getCdsIdVs() {
+		return cdsIdVs;
+	}
+	public void setCdsIdVs(Integer cdsIdVs) {
+		this.cdsIdVs = cdsIdVs;
+	}
+	public String getCdsCodVs() {
+		return cdsCodVs;
+	}
+	public void setCdsCodVs(String cdsCodVs) {
+		this.cdsCodVs = cdsCodVs;
+	}
+	public String getCdsDesVs() {
+		return cdsDesVs;
+	}
+	public void setCdsDesVs(String cdsDesVs) {
+		this.cdsDesVs = cdsDesVs;
+	}
+	public Integer getAdIdVs() {
+		return adIdVs;
+	}
+	public void setAdIdVs(Integer adIdVs) {
+		this.adIdVs = adIdVs;
+	}
+	public String getAdGenDesVs() {
+		return adGenDesVs;
+	}
+	public void setAdGenDesVs(String adGenDesVs) {
+		this.adGenDesVs = adGenDesVs;
+	}
+	public String getTipoIscrDesVs() {
+		return tipoIscrDesVs;
+	}
+	public void setTipoIscrDesVs(String tipoIscrDesVs) {
+		this.tipoIscrDesVs = tipoIscrDesVs;
+	}
+	public Integer getDoceIdVs() {
+		return doceIdVs;
+	}
+	public void setDoceIdVs(Integer doceIdVs) {
+		this.doceIdVs = doceIdVs;
+	}
+	public String getDoceNomeVs() {
+		return doceNomeVs;
+	}
+	public void setDoceNomeVs(String doceNomeVs) {
+		this.doceNomeVs = doceNomeVs;
+	}
+	public String getDoceCognomeVs() {
+		return doceCognomeVs;
+	}
+	public void setDoceCognomeVs(String doceCognomeVs) {
+		this.doceCognomeVs = doceCognomeVs;
+	}
+	public String getDoceRuoloVs() {
+		return doceRuoloVs;
+	}
+	public void setDoceRuoloVs(String doceRuoloVs) {
+		this.doceRuoloVs = doceRuoloVs;
+	}
+	public Date getDataAppelloVs() {
+		return dataAppelloVs;
+	}
+	public void setDataAppelloVs(Date dataAppelloVs) {
+		this.dataAppelloVs = dataAppelloVs;
+	}
+	public String getNomeCompletoVs() {
+		return doceNomeVs + " " + doceCognomeVs;
+	}
+	public String getCompletaDesCdsVs() {
+		return "[" + cdsCodVs + "]" + " " + cdsDesVs;
 	}
 	
 	@Override
@@ -167,10 +264,10 @@ public class CalendarioApp {
 				return false;
 		} else if (!tipoIscrDes.equals(other.tipoIscrDes))
 			return false;
-		if (doceMatricola == null) {
-			if (other.doceMatricola != null)
+		if (doceId == null) {
+			if (other.doceId != null)
 				return false;
-		} else if (!doceMatricola.equals(other.doceMatricola))
+		} else if (!doceId.equals(other.doceId))
 			return false;
 		if (doceNome == null) {
 			if (other.doceNome != null)
@@ -202,8 +299,11 @@ public class CalendarioApp {
 	@Override
 	public String toString() {
 		return "CalendarioApp [facId=" + facId + ", facDes=" + facDes + ", cdsId=" + cdsId + ", cdsDes=" + cdsDes + 
-				", adId=" + adId + ", adGenDes=" + adGenDes + ", tipoIscrDes=" + tipoIscrDes + ", doceMatricola=" + doceMatricola + 
-				", doceCognome=" + doceCognome + ", dataAppello=" + dataAppello + ", tr=" + tr + ", doceRuolo=" + doceRuolo + "]";
+				", adId=" + adId + ", adGenDes=" + adGenDes + ", tipoIscrDes=" + tipoIscrDes + ", doceId=" + doceId + 
+				", doceCognome=" + doceCognome + ", dataAppello=" + dataAppello + ", tr=" + tr + ", doceRuolo=" + doceRuolo + 
+				", facIdVs=" + facIdVs + ", facDesVs=" + facDesVs + ", cdsIdVs=" + cdsIdVs + ", cdsDesVs=" + cdsDesVs + 
+				", adIdVs=" + adIdVs + ", adGenDesVs=" + adGenDesVs + ", tipoIscrDesVs=" + tipoIscrDesVs + ", doceIdVs=" + doceIdVs + 
+				", doceCognomeVs=" + doceCognomeVs + ", doceRuoloVs=" + doceRuoloVs +"]";
 	}
 
 }

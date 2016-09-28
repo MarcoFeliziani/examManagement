@@ -8,6 +8,7 @@ public class DataCalendario {
 	private Integer oneDaymax;
 	private Integer fourDaymin;
 	private Integer fourDaymax;
+	private Integer distance;
 	
 	public Integer getDataMin() {
 		return dataMin;
@@ -45,9 +46,16 @@ public class DataCalendario {
 	public void setFourDaymax(Integer fourDaymax) {
 		this.fourDaymax = fourDaymax;
 	}
+	public Integer getDistance() {
+		return distance;
+	}
+	public void setDistance(Integer distance) {
+		this.distance = distance;
+	}
+	
 	@Override
 	public String toString() {
-		return "Docente [dataMin=" + dataMin + ", dataMax=" + dataMax + ", oneDaymin=" + oneDaymin +  ", oneDaymax=" + oneDaymax + ", fourDaymin=" + fourDaymin + ", fourDaymax=" + fourDaymax + "]";
+		return "Docente [dataMin=" + dataMin + ", dataMax=" + dataMax + ", oneDaymin=" + oneDaymin +  ", oneDaymax=" + oneDaymax + ", fourDaymin=" + fourDaymin + ", fourDaymax=" + fourDaymax +  ", distance=" + distance + "]";
 	}
 	
 

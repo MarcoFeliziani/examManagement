@@ -69,13 +69,13 @@
                 System.out.println(action);
             %>
 
-<c:if test= "${action == 'checkCompleted'}">     
-   Appello nello stesso giorno: <div class="red"></div>
-   Appello ad un giorno di distanza: <div class="orange"></div>
-   Appello a distanza da 2 a 4 giorni: <div class="green"></div>
+<!--<c:if test= "${action == 'checkCompleted'}">     
+   Appelli nell'intervallo selezionato: <div class="red"></div>
+   Appello ad un giorno di distanza dall'intervallo selezionato: <div class="orange"></div>
+   Appello a distanza da 2 a 4 giorni dall'intervallo selezionato: <div class="green"></div>
    <br/>
    <br/>
-</c:if>
+</c:if> -->
      
 	<table border=1>
         <thead>
@@ -85,13 +85,18 @@
             	<th>attività didattica</th>
 				<th>tipo</th>
 				<th>docente</th>
-			<c:if test= "${bean.doceRuolo != 'null'}">
 				<th>ruolo del docente</th>
-			</c:if>
 				<th>data appello</th>
-				<c:if test= "${action == 'checkCompleted'}">
-					<th>conflitto</th>
-				</c:if>
+			<c:if test= "${action == 'checkCompleted'}">	
+				<th>facoltà (confronto)</th>
+            	<th>corso di studio (confronto)</th>
+            	<th>attività didattica (confronto)</th>
+				<th>tipo (confronto)</th>
+				<th>docente (confronto)</th>
+				<th>ruolo del docente (confronto)</th>
+				<th>data appello (confronto)</th>
+			</c:if>
+
             </tr>
         </thead>
         <tbody>          
@@ -102,12 +107,20 @@
 				<td><c:out value="${bean.adGenDes}" /></td>
 				<td><c:out value="${bean.tipoIscrDes}" /></td>
 				<td><c:out value="${bean.nomeCompleto}" /></td>
-				<c:if test= "${bean.doceRuolo != 'null'}">
 				<td><c:out value="${bean.doceRuolo}" /></td>
-				</c:if>
 				<td><c:out value="${bean.dataAppello}" /></td>
-				<c:if test= "${action == 'checkCompleted'}">
-				<td class = <c:choose>
+			<c:if test= "${action == 'checkCompleted'}">	
+				<td><c:out value="${bean.facDesVs}" /></td>
+                <td><c:out value="${bean.completaDesCdsVs}" /></td>
+				<td><c:out value="${bean.adGenDesVs}" /></td>
+				<td><c:out value="${bean.tipoIscrDesVs}" /></td>
+				<td><c:out value="${bean.nomeCompletoVs}" /></td>
+				<td><c:out value="${bean.doceRuoloVs}" /></td>
+				<td><c:out value="${bean.dataAppelloVs}" /></td>
+			</c:if>
+				
+		<!--		<c:if test= "${action == 'checkCompleted'}">
+		 		<td class = <c:choose>
 				    					<c:when test="${bean.tr == 1}">"cerchioR"</c:when>
 				    					<c:when test="${bean.tr == 2}">"cerchioO"</c:when>
 				    					<c:when test="${bean.tr == 3}">"cerchioG"</c:when>
@@ -115,7 +128,7 @@
 							</c:choose>>
 				</td>
 				
-				</c:if>
+				</c:if>-->
 			</tr>
 			</c:forEach>
 		</tbody>
