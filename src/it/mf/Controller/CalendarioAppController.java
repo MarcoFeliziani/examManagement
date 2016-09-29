@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.mf.Dao.AdDao;
 import it.mf.Dao.CdsDao;
@@ -40,13 +41,24 @@ public class CalendarioAppController extends HttpServlet {
 
 		String forward = "";
 		
-		setFacoltaList(request);
-		setCdsList(request);
-		setAdList(request);
-		setDocenteList(request);
-		setRuoloList(request);
-		//request.setAttribute("action", "AppelloList");
-		forward = SEARCH_CAL_APP;
+		Integer doceId = getDoceId(request);
+		
+		String action = request.getParameter("action");
+		
+		if(action == null){
+			
+			request.setAttribute("beans", dao.getListaAppelli(0, 0, 0, doceId, null, null, null));
+			forward = LIST_APPELLO;
+		}
+		else{
+			setFacoltaList(request);
+			setCdsList(request);
+			setAdList(request);
+			setDocenteList(request);
+			setRuoloList(request);
+			//request.setAttribute("action", "AppelloList");
+			forward = SEARCH_CAL_APP;
+		}
 		
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);	
@@ -104,6 +116,11 @@ public class CalendarioAppController extends HttpServlet {
 		setRuoloList(request);
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
+	}
+	
+	private Integer getDoceId(HttpServletRequest request) {
+	HttpSession session = request.getSession(false);	//false ==> se non esiste non la crea
+	return session != null ? (Integer)session.getAttribute("doceId") : null;
 	}
 	
 	private void setFacoltaList(HttpServletRequest request) {

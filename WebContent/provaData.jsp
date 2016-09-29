@@ -24,6 +24,7 @@ $(function() {
 </script>
 </head>
 <body>
+
 <p>Date: <input type="text" id="datepicker"></p>
  
 <p>text: <input type="text" id="33"></p>

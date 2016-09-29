@@ -79,10 +79,18 @@
 		<tr>
 			<td>
 				<div id="examManagementLogo" align="left" >
-				<a href="<%=request.getContextPath()%>">
+				<a href="CalendarioAppController?action=edit">
 					<img src="<%=request.getContextPath()%>/images/home_page.jpg" alt="examManagement"/>
 				</a>
 				</div>
+				
+			<td>
+				<div id="checkout" align="right">
+					<a href="<%=request.getContextPath()%>/LogoutServlet">
+					<img src="<%=request.getContextPath()%>/images/shutdown.png" alt="Uscita"/>
+					</a>
+				</div>
+			</td>
 
 		</tr>
 </table>

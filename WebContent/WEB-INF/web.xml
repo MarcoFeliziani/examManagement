@@ -2,21 +2,32 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>examManagement</display-name>
   <welcome-file-list>
-    <welcome-file>CalendarioAppController</welcome-file>
-<!--     <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file> -->
+    <welcome-file>LoginServlet</welcome-file>
   </welcome-file-list>
   
-<filter>
-  <filter-name>sitemesh</filter-name>
-  <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
-</filter>
-
-<filter-mapping>
-  <filter-name>sitemesh</filter-name>
-  <url-pattern>/*</url-pattern>
-</filter-mapping>
+  <filter>
+    <filter-name>RequestLoggingFilter</filter-name>
+    <filter-class>it.mf.filter.RequestLoggingFilter</filter-class>
+  </filter>
+  <filter>
+    <filter-name>AuthenticationFilter</filter-name>
+    <filter-class>it.mf.filter.AuthenticationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>RequestLoggingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>sitemesh</filter-name>
+    <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>sitemesh</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>
