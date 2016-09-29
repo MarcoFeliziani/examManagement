@@ -82,7 +82,6 @@ public class CalendarioAppDao extends Dao {
 				calendarioApp.setDoceCognome(rs.getString("DOCE_COGNOME"));
 				calendarioApp.setDoceRuolo(rs.getString("DES"));
 				calendarioApp.setDataAppello(rs.getDate("DATA_INIZIO_APP"));
-				calendarioApp.setTr(0);
 				retValue.add(calendarioApp);
 				
 				
@@ -172,6 +171,7 @@ public class CalendarioAppDao extends Dao {
 				
 					calendarioApp = new CalendarioApp();
 					
+					calendarioApp.setAppId(rs.getInt("APP_ID"));
 					calendarioApp.setFacId(rs.getInt("FAC_ID"));
 					calendarioApp.setFacDes(rs.getString("FAC_DES"));
 					calendarioApp.setCdsId(rs.getInt("CDS_ID"));
@@ -185,6 +185,7 @@ public class CalendarioAppDao extends Dao {
 					calendarioApp.setDoceCognome(rs.getString("DOCE_COGNOME"));
 					calendarioApp.setDoceRuolo(rs.getString("DES"));
 					calendarioApp.setDataAppello(rs.getDate("DATA_INIZIO_APP"));
+					calendarioApp.setAppIdVs(rs.getInt("APP_ID_VS"));
 					calendarioApp.setFacIdVs(rs.getInt("FAC_ID_VS"));
 					calendarioApp.setFacDesVs(rs.getString("FAC_DES_VS"));
 					calendarioApp.setCdsIdVs(rs.getInt("CDS_ID_VS"));
@@ -197,7 +198,7 @@ public class CalendarioAppDao extends Dao {
 					calendarioApp.setDoceNomeVs(rs.getString("DOCE_NOME_VS"));
 					calendarioApp.setDoceCognomeVs(rs.getString("DOCE_COGNOME_VS"));
 					calendarioApp.setDoceRuoloVs(rs.getString("DES_VS"));
-					calendarioApp.setDataAppelloVs(rs.getDate("e.DATA_INIZIO_APP_VS"));
+					calendarioApp.setDataAppelloVs(rs.getDate("DATA_INIZIO_APP_VS"));
 		
 					retValue.add(calendarioApp);
 					

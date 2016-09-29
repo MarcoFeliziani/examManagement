@@ -24,7 +24,7 @@
     		/*Elimina i 'required' quando viene premuto il pulsante "Controllo di sovrapposizione"*/
     		$("#submit").click(function() {
     		    //$("#cdsId").removeProp('required');
-    		    $("#doceId").removeProp('required');
+    		    //$("#doceId").removeProp('required');
     		    $("#dataAppello").removeProp('required');
     		});
 			});
@@ -80,7 +80,7 @@
 			
 			<div><label for="doceId"><fmt:message key="app.label.doceMatricola" bundle="${lang}" />:</label> 
 			<br/>
-			<select name="doceId" id="doceId" required >
+			<select name="doceId" id="doceId" >
 					<option value=""></option>
 	    		<c:forEach var="item" items="${doceList}">
 	        		<option value="${item.doceId}">${item.nomeCompleto}</option>
@@ -131,7 +131,7 @@
 			</div>
 		<div class="descrizione"><label for="doceIdVs"><fmt:message key="app.label.doceMatricolaVs" bundle="${lang}" />:</label> 
 			<br/>
-			<select name="doceIdVs" id="doceIdVs"  multiple required>
+			<select name="doceIdVs" id="doceIdVs"  multiple >
 					<option value=""></option>
 	    		<c:forEach var="item" items="${doceList}">
 	        		<option value="${item.doceId}">${item.nomeCompleto}</option>

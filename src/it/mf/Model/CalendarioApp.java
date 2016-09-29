@@ -3,8 +3,9 @@ package it.mf.Model;
 import java.util.Date;
 
 
-public class CalendarioApp {
+public class CalendarioApp implements Comparable<CalendarioApp>{
 	
+	private Integer appId;
 	private Integer facId;
 	private String facDes;
 	private Integer cdsId;
@@ -19,7 +20,7 @@ public class CalendarioApp {
 	private String doceRuolo;
 	private Date dataAppello;
 	private Date aDataAppello;
-	private Integer tr;
+	private Integer appIdVs;
 	private Integer facIdVs;
 	private String facDesVs;
 	private Integer cdsIdVs;
@@ -33,7 +34,20 @@ public class CalendarioApp {
 	private String doceCognomeVs;
 	private String doceRuoloVs;
 	private Date dataAppelloVs;
+	private Integer tr;
 	
+	public Integer getAppId() {
+		return appId;
+	}
+	public void setAppId(Integer appId) {
+		this.appId = appId;
+	}
+	public Integer getTr() {
+		return tr;
+	}
+	public void setTr(Integer tr) {
+		this.tr = tr;
+	}
 	public Integer getFacId() {
 		return facId;
 	}
@@ -121,17 +135,17 @@ public class CalendarioApp {
 	public void setADataAppello(Date aDataAppello) {
 		this.aDataAppello = aDataAppello;
 	}
-	public Integer getTr() {
-		return tr;
-	}
-	public void setTr(Integer tr) {
-		this.tr = tr;
-	}
 	public String getCompletaDesCds() {
 		return "[" + cdsCod + "]" + " " + cdsDes;
 	}
 	public Integer getFacIdVs() {
 		return facIdVs;
+	}
+	public Integer getAppIdVs() {
+		return appIdVs;
+	}
+	public void setAppIdVs(Integer appIdVs) {
+		this.appIdVs = appIdVs;
 	}
 	public void setFacIdVs(Integer facIdVs) {
 		this.facIdVs = facIdVs;
@@ -298,12 +312,20 @@ public class CalendarioApp {
 	}
 	@Override
 	public String toString() {
-		return "CalendarioApp [facId=" + facId + ", facDes=" + facDes + ", cdsId=" + cdsId + ", cdsDes=" + cdsDes + 
+		return "CalendarioApp [facId=" + facId + ", facDes=" + facDes + ", appId=" + appId + ", cdsId=" + cdsId + ", cdsDes=" + cdsDes + 
 				", adId=" + adId + ", adGenDes=" + adGenDes + ", tipoIscrDes=" + tipoIscrDes + ", doceId=" + doceId + 
-				", doceCognome=" + doceCognome + ", dataAppello=" + dataAppello + ", tr=" + tr + ", doceRuolo=" + doceRuolo + 
-				", facIdVs=" + facIdVs + ", facDesVs=" + facDesVs + ", cdsIdVs=" + cdsIdVs + ", cdsDesVs=" + cdsDesVs + 
+				", doceCognome=" + doceCognome + ", dataAppello=" + dataAppello + ", doceRuolo=" + doceRuolo + 
+				", facIdVs=" + facIdVs + ", facDesVs=" + facDesVs + ", appIdVs=" + appIdVs + ", cdsIdVs=" + cdsIdVs + ", cdsDesVs=" + cdsDesVs + 
 				", adIdVs=" + adIdVs + ", adGenDesVs=" + adGenDesVs + ", tipoIscrDesVs=" + tipoIscrDesVs + ", doceIdVs=" + doceIdVs + 
 				", doceCognomeVs=" + doceCognomeVs + ", doceRuoloVs=" + doceRuoloVs +"]";
+	}
+	@Override
+	public int compareTo(CalendarioApp o) {
+		
+		int r = facDes.compareToIgnoreCase(o.facDes);
+		if (r != 0)
+			return r;
+		return appId-o.appId;
 	}
 
 }

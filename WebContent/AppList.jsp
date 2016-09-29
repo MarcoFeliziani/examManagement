@@ -80,6 +80,9 @@
 	<table border=1>
         <thead>
             <tr>
+            <c:if test= "${action == 'checkCompleted'}">
+            	<th>codice appello</th>
+            </c:if>
             	<th>facoltà</th>
             	<th>corso di studio</th>
             	<th>attività didattica</th>
@@ -88,6 +91,7 @@
 				<th>ruolo del docente</th>
 				<th>data appello</th>
 			<c:if test= "${action == 'checkCompleted'}">	
+				<th>codice appello (confronto)</th>
 				<th>facoltà (confronto)</th>
             	<th>corso di studio (confronto)</th>
             	<th>attività didattica (confronto)</th>
@@ -102,6 +106,9 @@
         <tbody>          
 		  <c:forEach items="${beans}" var="bean">
 		    <tr>
+		    <c:if test= "${action == 'checkCompleted'}">
+				<td><c:out value="${bean.appId}" /></td>
+			</c:if>
 				<td><c:out value="${bean.facDes}" /></td>
                 <td><c:out value="${bean.completaDesCds}" /></td>
 				<td><c:out value="${bean.adGenDes}" /></td>
@@ -109,7 +116,8 @@
 				<td><c:out value="${bean.nomeCompleto}" /></td>
 				<td><c:out value="${bean.doceRuolo}" /></td>
 				<td><c:out value="${bean.dataAppello}" /></td>
-			<c:if test= "${action == 'checkCompleted'}">	
+			<c:if test= "${action == 'checkCompleted'}">
+				<td><c:out value="${bean.appIdVs}" /></td>
 				<td><c:out value="${bean.facDesVs}" /></td>
                 <td><c:out value="${bean.completaDesCdsVs}" /></td>
 				<td><c:out value="${bean.adGenDesVs}" /></td>
